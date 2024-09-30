@@ -1,0 +1,181 @@
+extends layout 
+
+
+block head 
+    include ./head.jade
+    link(rel='stylesheet', href='https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css')
+
+block content 
+    include ./header.jade
+        .row(style="margin-top:5rem")
+            .col-sm-12
+                section.panel
+                    header.panel-heading.mb-5
+                        | Employee
+                        .btn-group.float-right(style='margin:-8px 0 0;')
+                            button#addTransaction.btn.btn-success(href='#addUserModal', data-toggle='modal')
+                                | Add Employee
+                                i.fa.fa-plus
+                    #addUserModal.modal.fade(aria-hidden='true', aria-labelledby='addUserModalLabel', role='dialog', data-keyboard="true", data-backdrop="static")
+                        .modal-dialog.modal-dialog-centered.modal-lg
+                            .modal-content
+                                form#addUserForm(role='form')
+                                    .modal-header 
+                                        h4.modal-title Add User
+                                        button.close(aria-hidden='true', data-dismiss='modal', type='button') ×
+                                    .modal-body
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='name') Name *
+                                            .col-sm-6
+                                                input#name.form-control(type='text', name='name', placeholder='Enter full name', required)
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='email') Email *
+                                            .col-sm-6
+                                                input#email.form-control(type='email', name='email', placeholder='Enter email address', required)
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='mobile') Mobile No *
+                                            .col-sm-6
+                                                input#mobile.form-control(type='tel', name='mobile', placeholder='Enter mobile number', required)
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='designation') Designation *
+                                            .col-sm-6
+                                                input#designation.form-control(type='text', name='designation', placeholder='Enter designation', required)
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='gender') Gender *
+                                            .col-sm-6
+                                                select#gender.form-control(name='gender', required)
+                                                    option(value='') Select Gender
+                                                    option(value='Male') Male
+                                                    option(value='Female') Female
+                                                    option(value='Other') Other
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='course') Course *
+                                            .col-sm-6
+                                                .form-check
+                                                    input.form-check-input(type='checkbox', name='course', value='MCA', id='MCA')
+                                                    label.form-check-label(for='course1') MCA
+                                                .form-check
+                                                    input.form-check-input(type='checkbox', name='course', value='BCA', id='BCA')
+                                                    label.form-check-label(for='course2') BCA
+                                                .form-check
+                                                    input.form-check-input(type='checkbox', name='course', value='BSC', id='BSC')
+                                                    label.form-check-label(for='course3') BSC
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='img') Upload Image
+                                            .col-sm-6
+                                                input#img.form-control-file(type='file', name='file', accept="image/*")
+
+                                    .modal-footer
+                                        button.btn.btn-secondary(data-dismiss='modal') Close
+                                        input#saveAddUser.btn.btn-primary(type='submit', value='Save')
+
+                    #editUserModal.modal.fade(aria-hidden='true', aria-labelledby='editUserModalLabel', role='dialog', data-keyboard="true", data-backdrop="static")
+                        .modal-dialog.modal-dialog-centered.modal-lg
+                            .modal-content
+                                form#editUserForm(role='form')
+                                    .modal-header 
+                                        h4.modal-title Edit User
+                                        button.close(aria-hidden='true', data-dismiss='modal', type='button') ×
+                                    .modal-body
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='name') Name *
+                                            .col-sm-6
+                                                input#updateName.form-control(type='text', name='name', placeholder='Enter full name', required)
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='email') Email *
+                                            .col-sm-6
+                                                input#updateEmail.form-control(type='email', name='email', placeholder='Enter email address', required)
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='mobile') Mobile No *
+                                            .col-sm-6
+                                                input#updateMobile.form-control(type='tel', name='mobile', placeholder='Enter mobile number', required)
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='designation') Designation *
+                                            .col-sm-6
+                                                input#updateDesignation.form-control(type='text', name='designation', placeholder='Enter designation', required)
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='gender') Gender *
+                                            .col-sm-6
+                                                select#updateGender.form-control(name='gender', required)
+                                                    option(value='') Select Gender
+                                                    option(value='Male') Male
+                                                    option(value='Female') Female
+                                                    option(value='Other') Other
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='course') Course *
+                                            .col-sm-6
+                                                .form-check
+                                                    input.form-check-input(type='checkbox', name='course', value='MCA', id='MCA')
+                                                    label.form-check-label(for='course1') MCA
+                                                .form-check
+                                                    input.form-check-input(type='checkbox', name='course', value='BCA', id='BCA')
+                                                    label.form-check-label(for='course2') BCA
+                                                .form-check
+                                                    input.form-check-input(type='checkbox', name='course', value='BSC', id='BSC')
+                                                    label.form-check-label(for='course3') BSC
+                                        
+                                        .form-group.row
+                                            .col-sm-1
+                                            label.col-sm-3.col-form-label(for='img') Upload Image
+                                            .col-sm-6
+                                                input#img.form-control-file(type='file', name='file', accept="image/*")
+
+                                    .modal-footer
+                                        input#id(type='hidden',name='id', value='new')
+                                        button.btn.btn-secondary(data-dismiss='modal') Close
+                                        input#saveEditUser.btn.btn-primary(type='submit', value='Save')
+
+                .panel-body
+                    //- form#divdate.form-inline.row
+                    //-     .form-group.col-md-2
+                    //-         select#soldToFilter.soldToFilter.soldToFilter-select2.form-control(name='soldTo', style='width: 150px;')
+                    //-     .form-group.col-md-2
+                    //-         select#conditionFilter.conditionFilter-select2.form-control(name='condition', style='width: 150px;')
+                    //-     .form-group.col-md-2
+                    //-     button.btn.btn-primary(type="submit", id="load") Load
+                
+                table#employeeTable.display.table.table-bordered.cell-border(style='width:100%; margin-top:5rem;')
+                    thead
+                        tr
+                            th Employee ID
+                            th Image
+                            th Name
+                            th Email
+                            th Mobile No
+                            th Designation
+                            th Gender
+                            th Course 
+                            th Create Date
+                            th Actions
+                    tbody
+
+block foot 
+    include ./footer.jade
+    script(src='https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js')
+    script(src='./javascripts/employee.js')
+     
+

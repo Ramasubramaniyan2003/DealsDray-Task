@@ -1,0 +1,31 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa; /* Light background */
+    max-width: 100%;
+}
+
+.nav_logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav_items {
+    list-style: none;
+    display: flex;
+}
+
+.nav_item {
+    margin: 0 15px; /* Space between items */
+}
+
+.nav_link {
+    text-decoration: none;
+    color: #007bff; /* Link color */
+}
+
+.nav_link:hover {
+    text-decoration: underline; /* Underline on hover */
+}

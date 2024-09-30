@@ -1,0 +1,28 @@
+aside
+    header.header
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            .container-fluid
+                a.navbar-brand(href='#') Employee Manager
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                .collapse.navbar-collapse#navbarNav
+                    ul.navbar-nav.ml-auto
+                        li.nav-item
+                            a.nav-link(href='/dashboard') Home
+                        li.nav-item
+                            a.nav-link(href='/employee') Employee List
+                        li.nav-item
+                            a.nav-link#loginUser(href='#') Signup User
+                        li.nav-item
+                            a.nav-link#logout(href='/logout') Logout
+.container-fluid
+    div
+
+script.
+    const user = localStorage.getItem('email');
+    document.querySelector('#loginUser').text = user;
+
+    document.querySelector('#logout').addEventListener('click', () => {
+    localStorage.clear();
+    })
+

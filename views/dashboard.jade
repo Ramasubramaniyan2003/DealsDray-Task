@@ -1,0 +1,32 @@
+extends layout 
+
+block head 
+    include ./head.jade
+    style.
+        .full-height {
+            height: 100vh; /* Full height */
+        }
+        .welcome-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the message */
+            text-align: center;
+        }
+
+block content
+    include ./header.jade
+        .full-height
+            .row(style="margin-top:5rem") 
+                .col-sm-12
+                    section.panel
+                        header.panel-heading
+                            h4
+                                | Dashboard
+            .welcome-message
+                h1 Welcome to Admin Panel
+                p Here you can manage your application settings and user data.
+                            
+
+block foot 
+    include ./footer.jade
